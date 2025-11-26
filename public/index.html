@@ -3,6 +3,12 @@
   <head>
     <title>P2PBattleship</title>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.4/css/bootstrap.min.css"
@@ -17,126 +23,129 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="background-aurora">
+      <span class="blob blob-one"></span>
+      <span class="blob blob-two"></span>
+      <span class="blob blob-three"></span>
+    </div>
+    <div class="container app-container">
+      <header class="hero text-center">
+        <p class="eyebrow">Realtime Multiplayer</p>
+        <h1>Command Your Fleet</h1>
+        <p class="hero-copy">
+          Queue up, chat with your rival, and sink every last ship in this reimagined P2P Battleship
+          arena.
+        </p>
+      </header>
       <div class="row vertical-center-row">
         <div class="col-md-12">
           <!-- Disconnected from server -->
-          <div id="disconnected">
-            <div class="row">
-              <div class="col-sm-4 col-sm-offset-4 text-center">
-                <div class="alert alert-danger">
-                  <p>Not connected to server.</p>
-                </div>
-              </div>
+          <div id="disconnected" class="state-card glass-panel">
+            <div class="modern-alert text-center">
+              <h4>You are offline</h4>
+              <p>We’re attempting to reconnect you to the battle grid.</p>
             </div>
           </div>
 
           <!-- Waiting room -->
           <div
             id="waiting-room"
+            class="state-card glass-panel"
             style="display: none"
           >
-            <div class="row">
-              <div class="col-sm-10 col-sm-offset-1 text-center">
-                <dotlottie-player
-                  src="https://lottie.host/1b94a656-9a04-4d5d-9a03-8fee66a11b4c/YZVHc3ddAY.json"
-                  background="transparent"
-                  speed="1"
-                  style="width: 100%; height: 100%"
-                  loop
-                  autoplay
-                ></dotlottie-player>
-
-                <!-- <div class="panel panel-primary"> -->
-                <!-- <div class="panel-heading">Waiting Room</div> -->
-                <div class="typewriter">
-                  <h1>You are connected to the server.</h1>
-                </div>
-              </div>
-              <!-- </div> -->
-            </div>
-            <div class="online-container">
+            <div class="waiting-content text-center">
               <dotlottie-player
-                src="https://lottie.host/bef3113a-6432-4915-92b3-0c5cd1346def/3Zzs5hWcHN.lottie"
+                src="https://lottie.host/1b94a656-9a04-4d5d-9a03-8fee66a11b4c/YZVHc3ddAY.json"
                 background="transparent"
                 speed="1"
-                style="width: 80px; height: 80px"
+                style="width: 70%; height: 230px"
                 loop
                 autoplay
               ></dotlottie-player>
+              <div class="typewriter">
+                <h1>You are connected to the server.</h1>
+              </div>
+              <p class="waiting-copy">Hold tight while we find another commander...</p>
+              <div class="online-container">
+                <dotlottie-player
+                  src="https://lottie.host/bef3113a-6432-4915-92b3-0c5cd1346def/3Zzs5hWcHN.lottie"
+                  background="transparent"
+                  speed="1"
+                  style="width: 80px; height: 80px"
+                  loop
+                  autoplay
+                ></dotlottie-player>
+              </div>
             </div>
           </div>
 
           <!-- Game -->
           <div
             id="game"
+            class="game-stage glass-panel"
             style="display: none"
           >
-            <div class="row">
-              <div class="col-md-12">
-                <div class="panel panel-primary">
-                  <div class="panel-heading">Battleship Game #<span id="game-number"></span></div>
-                  <div class="panel-body">
-                    <!-- Player grids -->
-                    <div class="row">
-                      <div class="col-md-6 player-grid text-center">
-                        <h3>You</h3>
-                        <canvas
-                          id="canvas-grid1"
-                          width="381"
-                          height="381"
-                          >Browser does not support canvas.</canvas
-                        >
-                      </div>
-                      <div class="col-md-6 player-grid text-center">
-                        <h3>Opponent</h3>
-                        <canvas
-                          id="canvas-grid2"
-                          width="381"
-                          height="381"
-                          >Browser does not support canvas.</canvas
-                        >
-                      </div>
-                    </div>
-                  </div>
-
-                  <ul class="list-group">
-                    <!-- Status -->
-                    <li
-                      class="list-group-item text-center"
-                      id="turn-status"
-                    ></li>
-
-                    <!-- Chat messages -->
-                    <li
-                      class="list-group-item chat-container"
-                      id="messages-list"
-                    >
-                      <ul id="messages"></ul>
-                    </li>
-
-                    <!-- Send chat message form -->
-                    <li class="chat-input-container">
-                      <form
-                        id="message-form"
-                        action=""
-                      >
-                        <div class="input-group">
-                          <input
-                            id="message"
-                            class="form-control"
-                            placeholder="Send a message"
-                            autocomplete="off"
-                          />
-                          <div class="input-group-btn">
-                            <button class="btn btn-primary">Send Message</button>
-                          </div>
-                        </div>
-                      </form>
-                    </li>
-                  </ul>
-                </div>
+            <div class="game-hud">
+              <div class="hud-chip">
+                <span class="label">Match</span>
+                <span class="value">#<span id="game-number">—</span></span>
               </div>
+              <div class="hud-chip status-chip" id="turn-status">Deploying fleets…</div>
+              <div class="hud-chip connection-chip">
+                <span class="pulse-dot"></span>
+                Opponent linked
+              </div>
+            </div>
+
+            <!-- Player grids -->
+            <div class="row grids-row">
+              <div class="col-md-6 player-grid text-center">
+                <h3>You</h3>
+                <canvas
+                  id="canvas-grid1"
+                  width="381"
+                  height="381"
+                  >Browser does not support canvas.</canvas
+                >
+              </div>
+              <div class="col-md-6 player-grid text-center">
+                <h3>Opponent</h3>
+                <canvas
+                  id="canvas-grid2"
+                  width="381"
+                  height="381"
+                  >Browser does not support canvas.</canvas
+                >
+              </div>
+            </div>
+
+            <!-- Chat -->
+            <div class="chat-shell">
+              <div class="chat-header">
+                Tactical Comms
+              </div>
+              <div
+                class="chat-body"
+                id="messages-list"
+              >
+                <ul id="messages"></ul>
+              </div>
+              <form
+                id="message-form"
+                action=""
+              >
+                <div class="input-group">
+                  <input
+                    id="message"
+                    class="form-control"
+                    placeholder="Send a message"
+                    autocomplete="off"
+                  />
+                  <div class="input-group-btn">
+                    <button class="btn btn-primary">Send Message</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
