@@ -87,8 +87,42 @@ body {
 
 .hero h1 {
   font-weight: 600;
-  font-size: clamp(2rem, 4vw, 3rem);
+  /* font-size: clamp(2rem, 4vw, 3rem); */
   margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-weight: 800;
+  font-size: clamp(4rem, 6vw, 6rem);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(120deg, #ffffff 0%, #6c5ce7 55%, #5ef0ff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 20px 35px rgba(0, 0, 0, 0.55);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-title::after {
+  content: '';
+  width: 64px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
+}
+.hero-title::before {
+  content: '';
+  width: 64px;
+  height: 2px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
 }
 
 .eyebrow {
@@ -101,9 +135,13 @@ body {
 }
 
 .hero-copy {
-  max-width: 32rem;
+  max-width: 80%;
   margin: 0 auto;
   color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.35em;
+  font-size: 1rem;
+  font-weight: 600;
 }
 
 .glass-panel {
@@ -141,6 +179,9 @@ body {
 .waiting-copy {
   color: var(--muted);
   font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.45em;
+  font-weight: 600;
 }
 
 .online-container {
@@ -170,6 +211,31 @@ body {
   align-items: center;
   gap: 0.4rem;
   color: var(--muted);
+}
+
+.brand-chip {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding: 1.1rem 1.5rem;
+  border: none;
+  background: linear-gradient(120deg, rgba(94, 240, 255, 0.35), rgba(108, 92, 231, 0.5));
+  box-shadow: 0 20px 40px rgba(6, 11, 40, 0.55);
+}
+
+.brand-mark {
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.brand-subtitle {
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .identity-chip {

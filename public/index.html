@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>P2PBattleship</title>
+    <title>Battle Fleet</title>
     <meta charset="UTF-8" />
     <link
       rel="preconnect"
@@ -38,10 +38,10 @@
     <div class="container app-container">
       <header class="hero text-center">
         <p class="eyebrow">Realtime Multiplayer</p>
-        <h1>Command Your Fleet</h1>
+        <h1 class="hero-title">Battle Fleet</h1>
         <p class="hero-copy">
-          Queue up, chat with your rival, and sink every last ship in this reimagined P2P Battleship
-          arena.
+          Battle Fleet is a fast, neon-lit twist on Battleship where pirate captains clash live—line
+          up your shots, trash-talk rivals, and control the grid.
         </p>
       </header>
       <div class="row vertical-center-row">
@@ -65,17 +65,17 @@
           >
             <div class="waiting-content text-center">
               <dotlottie-player
-                src="https://lottie.host/1b94a656-9a04-4d5d-9a03-8fee66a11b4c/YZVHc3ddAY.json"
+                src="https://lottie.host/efc32e3d-c726-4071-abfc-a5981d02eb6a/qbwVfy0CCy.lottie"
+                style="width: 300px; height: 300px"
                 background="transparent"
                 speed="1"
-                style="width: 70%; height: 230px"
                 loop
                 autoplay
               ></dotlottie-player>
               <div class="typewriter">
-                <h1>You are connected to the server.</h1>
+                <h1>Battle Fleet command node online.</h1>
               </div>
-              <p class="waiting-copy">Hold tight while we find another commander...</p>
+              <p class="waiting-copy">Matching fleets...</p>
               <div class="online-container">
                 <dotlottie-player
                   src="https://lottie.host/bef3113a-6432-4915-92b3-0c5cd1346def/3Zzs5hWcHN.lottie"
@@ -96,6 +96,10 @@
             style="display: none"
           >
             <div class="game-hud">
+              <div class="hud-chip brand-chip">
+                <span class="brand-mark">Battle Fleet</span>
+                <span class="brand-subtitle">Live Battle</span>
+              </div>
               <div class="hud-chip">
                 <span class="label">Match</span>
                 <span class="value">#<span id="game-number">—</span></span>
