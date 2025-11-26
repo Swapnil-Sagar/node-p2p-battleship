@@ -3,8 +3,15 @@
   <head>
     <title>P2PBattleship</title>
     <meta charset="UTF-8" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet"
@@ -40,7 +47,10 @@
       <div class="row vertical-center-row">
         <div class="col-md-12">
           <!-- Disconnected from server -->
-          <div id="disconnected" class="state-card glass-panel">
+          <div
+            id="disconnected"
+            class="state-card glass-panel"
+          >
             <div class="modern-alert text-center">
               <h4>You are offline</h4>
               <p>We’re attempting to reconnect you to the battle grid.</p>
@@ -90,7 +100,28 @@
                 <span class="label">Match</span>
                 <span class="value">#<span id="game-number">—</span></span>
               </div>
-              <div class="hud-chip status-chip" id="turn-status">Deploying fleets…</div>
+              <div class="hud-chip identity-chip">
+                <span class="chip-label">You</span>
+                <span
+                  class="chip-value"
+                  id="self-name"
+                  >Awaiting crew</span
+                >
+              </div>
+              <div class="hud-chip identity-chip opponent-chip">
+                <span class="chip-label">Opponent</span>
+                <span
+                  class="chip-value"
+                  id="opponent-name"
+                  >Not linked yet</span
+                >
+              </div>
+              <div
+                class="hud-chip status-chip"
+                id="turn-status"
+              >
+                Deploying fleets…
+              </div>
               <div class="hud-chip connection-chip">
                 <span class="pulse-dot"></span>
                 Opponent linked
@@ -100,7 +131,14 @@
             <!-- Player grids -->
             <div class="row grids-row">
               <div class="col-md-6 player-grid text-center">
-                <h3>You</h3>
+                <h3>
+                  Commander
+                  <span
+                    class="commander-name"
+                    id="grid-self-name"
+                    >Awaiting crew</span
+                  >
+                </h3>
                 <canvas
                   id="canvas-grid1"
                   width="381"
@@ -109,7 +147,14 @@
                 >
               </div>
               <div class="col-md-6 player-grid text-center">
-                <h3>Opponent</h3>
+                <h3>
+                  Rival
+                  <span
+                    class="commander-name"
+                    id="grid-opponent-name"
+                    >Unknown</span
+                  >
+                </h3>
                 <canvas
                   id="canvas-grid2"
                   width="381"
@@ -121,9 +166,7 @@
 
             <!-- Chat -->
             <div class="chat-shell">
-              <div class="chat-header">
-                Tactical Comms
-              </div>
+              <div class="chat-header">Tactical Comms</div>
               <div
                 class="chat-body"
                 id="messages-list"

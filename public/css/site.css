@@ -172,6 +172,29 @@ body {
   color: var(--muted);
 }
 
+.identity-chip {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+}
+
+.chip-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.chip-value {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.opponent-chip .chip-value {
+  color: var(--accent);
+}
+
 .hud-chip .value {
   color: var(--text);
   font-weight: 600;
@@ -204,6 +227,22 @@ body {
   color: var(--text);
   font-weight: 600;
   margin-bottom: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.commander-name {
+  font-size: 1.4rem;
+  color: var(--text);
+  letter-spacing: 0.05em;
+}
+
+.player-grid h3 span {
+  font-weight: 700;
 }
 
 canvas {
@@ -304,6 +343,10 @@ canvas:hover {
   letter-spacing: 0.08em;
   padding: 0 1.5rem;
   transition: transform 0.2s ease;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-primary:hover,
@@ -410,6 +453,15 @@ canvas:hover {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes soar {
+  from {
+    transform: translateY(30px) scale(0.98);
+  }
+  to {
+    transform: translateY(0) scale(1);
   }
 }
 

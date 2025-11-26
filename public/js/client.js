@@ -1,13 +1,24 @@
 var socket = io();
 
 $(function() {
+  function setCommanderNames(selfName, opponentName) {
+    $('#self-name').text(selfName);
+    $('#grid-self-name').text(selfName);
+    $('#opponent-name').text(opponentName);
+    $('#grid-opponent-name').text(opponentName);
+  }
+
+  function resetCommanderNames() {
+    setCommanderNames('Awaiting crew', 'Not linked yet');
+  }
+
   /**
    * Successfully connected to server event
    */
   socket.on('connect', function() {
     console.log('Connected to server.');
     $('#disconnected').hide();
-    $('#waiting-room').show();   
+    $('#waiting-room').show();
   });
 
   /**
@@ -18,19 +29,21 @@ $(function() {
     $('#waiting-room').hide();
     $('#game').hide();
     $('#disconnected').show();
+    resetCommanderNames();
   });
 
   /**
    * User has joined a game
    */
-  socket.on('join', function(gameId) {
+  socket.on('join', function(gameData) {
     Game.initGame();
     $('#messages').empty();
     $('#disconnected').hide();
     $('#waiting-room').hide();
     $('#game').show();
-    $('#game-number').html(gameId);
-  })
+    $('#game-number').html(gameData.gameId);
+    setCommanderNames(gameData.selfName, gameData.opponentName);
+  });
 
   /**
    * Update player's game state
@@ -69,6 +82,7 @@ $(function() {
   socket.on('leave', function() {
     $('#game').hide();
     $('#waiting-room').show();
+    resetCommanderNames();
   });
 
   /**
@@ -80,6 +94,7 @@ $(function() {
     return false;
   });
 
+  resetCommanderNames();
 });
 
 /**
