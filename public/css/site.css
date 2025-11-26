@@ -75,6 +75,34 @@ body {
   z-index: 1;
 }
 
+.site-footer {
+  width: 100%;
+  text-align: center;
+  padding: 1.5rem 0 2.5rem;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-icon svg {
+  width: 28px;
+  height: 28px;
+  fill: rgba(255, 255, 255, 0.75);
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.footer-icon:hover svg,
+.footer-icon:focus svg {
+  transform: translateY(-3px);
+  fill: #5ef0ff;
+}
+
 .vertical-center-row {
   display: flex;
   justify-content: center;
@@ -317,6 +345,10 @@ canvas {
   background: rgba(6, 9, 30, 0.9);
   box-shadow: 0 25px 40px rgba(5, 10, 30, 0.4);
   transition: transform 0.45s ease, box-shadow 0.45s ease;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  aspect-ratio: 1 / 1;
 }
 
 canvas:hover {
@@ -381,12 +413,30 @@ canvas:hover {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+#message-form .input-group {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  gap: 0.75rem;
+}
+
 #message {
   border-radius: 18px 0 0 18px;
   border: none;
   background: rgba(255, 255, 255, 0.08);
   color: var(--text);
   height: 48px;
+  flex: 1;
+}
+
+.input-group-btn {
+  display: flex;
+  width: auto;
+  white-space: normal;
+}
+
+#message-form .input-group-btn {
+  display: flex;
 }
 
 #message::placeholder {
@@ -458,6 +508,142 @@ canvas:hover {
   color: var(--danger);
 }
 
+@media (max-width: 1024px) {
+  .container.app-container {
+    padding: 2.5rem 1.25rem 3rem;
+  }
+
+  .game-hud {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hud-chip {
+    width: 100%;
+  }
+
+  .hero-title {
+    letter-spacing: 0.25em;
+  }
+
+  .hero-copy {
+    letter-spacing: 0.25em;
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .vertical-center-row {
+    flex-direction: column;
+  }
+
+  .grids-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .player-grid {
+    margin-bottom: 0.5rem;
+  }
+
+  .chat-shell {
+    margin-top: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 4rem);
+    letter-spacing: 0.2em;
+  }
+
+  .hero-copy {
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+    max-width: 95%;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.35rem;
+  }
+
+  .waiting-copy {
+    letter-spacing: 0.24em;
+  }
+
+  .site-footer {
+    letter-spacing: 0.14em;
+  }
+}
+
+@media (max-width: 540px) {
+  .glass-panel,
+  .game-stage {
+    padding: 1.5rem;
+  }
+
+  .chat-shell {
+    border-radius: 18px;
+  }
+
+  .hud-chip {
+    border-radius: 14px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 9vw, 3.2rem);
+    letter-spacing: 0.12em;
+    gap: 0.5rem;
+  }
+
+  .hero-title::after,
+  .hero-title::before {
+    display: none;
+  }
+
+  .hero-copy {
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+  }
+
+  .typewriter h1 {
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+  }
+
+  .waiting-copy {
+    letter-spacing: 0.16em;
+    font-size: 0.85rem;
+  }
+
+  .site-footer {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+  }
+
+  #message-form .input-group {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .input-group-btn,
+  #message-form .input-group-btn {
+    width: 100%;
+  }
+
+  #message-form .form-control {
+    border-radius: 18px;
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .btn-primary {
+    border-radius: 18px;
+    width: 100%;
+    height: 46px;
+    justify-content: center;
+  }
+}
+
 .typewriter h1 {
   color: var(--text);
   font-family: 'Poppins', monospace;
@@ -467,6 +653,9 @@ canvas:hover {
   margin: 0 auto;
   letter-spacing: 0.1em;
   animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  font-size: clamp(1.5rem, 3vw, 1.4rem);
+  max-width: 100%;
+  display: inline-block;
 }
 
 @keyframes typing {
